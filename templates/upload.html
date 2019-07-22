@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+</form>
+
+{% if shape is defined %}
+    shape is: {{ shape[0]}} rows, {{ shape[1]}} columns
+    {% if shape[0]>0 %}
+    <p><a href="{{ url_for('step1') }}">next step 1</a></p>
+    {% else %}
+    0 row found
+    {% endif %}
+{% else %}
+    waiting for file upload
+{% endif %}
+
+{% for table in tables %}
+            {{ table|safe }}
+{% endfor %}
+</body>
+</html>
